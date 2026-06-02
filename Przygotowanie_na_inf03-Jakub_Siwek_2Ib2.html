@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egzamin INF.03: Platforma Edukacyjna HTML5 & CSS3</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <input type="checkbox" id="menu-toggle" aria-hidden="true">
+    <label for="menu-toggle" class="hamburger-label" aria-label="Otwórz menu nawigacji">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <label for="menu-toggle" class="sidebar-overlay"></label>
+
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            INF.03 Repetytorium
+        </div>
+        <nav class="sidebar-nav" aria-label="Główna nawigacja kursu">
+            <ul>
+                <li><a href="#section1">1. Wstęp do HTML</a></li>
+                <li><a href="#section2">2. Znaczniki Semantyczne i Formatowanie</a></li>
+                <li><a href="#section3">3. Listy i Wyliczenia</a></li>
+                <li><a href="#section4">4. Hiperłącza i Zasoby Graficzne</a></li>
+                <li><a href="#section5">5. Tabele Standardowe i Złożone</a></li>
+                <li><a href="#section6">6. Kaskadowość, Dziedziczenie i CSS</a></li>
+                <li><a href="#section7">7. Box Model i Stylizacja Pudełek</a></li>
+                <li><a href="#section8">8. Układy Stron i Menu Rozwijane</a></li>
+                <li><a href="#section9">9. Animacje i pozycjonowanie</a></li>
+                <li><a href="#section10">10. Formularze</a></li>
+                <li><a href="#section11">11. Grafika SVG i Responsywność (WACG)</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="app-container">
+        
+        <header class="topbar">
+            <div class="topbar-title">
+                Platforma Edukacyjna HTML/CSS
+            </div>
+            <span style="margin-left: auto;">Jakub Siwek</span>
+        </header>
+
+        <main class="content-area">
+            
+            <div class="hero-banner">
+                <h1>Vademecum Egzaminu Praktycznego INF.03</h1>
+                <p>Kompleksowa, zweryfikowana baza wiedzy z zakresu strukturalnego języka znaczników HTML5 oraz arkuszy stylów CSS3. Opracowana ściśle według wytycznych CKE dla zawodu Technik Informatyk. Poznaj pełną teorię, analizuj czysty kod i obserwuj natychmiastowe zachowanie elementów w przeglądarce.</p>
+            </div>
+
+            <section id="section1" class="topic-section">
+                <h2>1 — Wstęp i Podstawy HTML</h2>
+                
+                <h3>Istota struktury dokumentu</h3>
+                <p><strong>HTML (HyperText Markup Language)</strong> nie jest językiem programowania, lecz strukturalnym językiem znaczników. Oznacza to, że nie posiada struktur logicznych, pętli czy zmiennych. Jego jedynym zadaniem jest semantyczne i strukturalne opisanie zawartości witryny internetowej. Przeglądarka internetowa pobiera plik tekstowy HTML, analizuje zawarte w nim tagi, a następnie buduje drzewo dokumentu (DOM) i renderuje interfejs graficzny użytkownika.</p>
+
+                <h3>Obowiązkowy szkielet dokumentu HTML5</h3>
+                <p>Każdy dokument tworzony w ramach zadania egzaminacyjnego INF.03 musi posiadać nienaganną strukturę bazową. Pominięcie któregokolwiek z poniższych elementów skutkuje utratą punktów w kryterium struktury kodu.</p>
+
+                <div class="code-block-container">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Kawiarnia Ambient - Menu i Rezerwacje&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Zawartość widoczna dla użytkownika --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                </div>
+
+                <div class="table-responsive-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Znacznik / Element</th>
+                                <th>Rola techniczna i znaczenie strukturalne</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                                <td>Deklaracja typu dokumentu. Informuje przeglądarkę, że ma do czynienia z nowoczesnym standardem HTML5, co zapobiega przejściu w tryb wstecznej kompatybilności (Quirks Mode).</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;html lang="pl"&gt;</code></td>
+                                <td>Główny kontener (korzeń) dokumentu. Atrybut <code>lang</code> określa język publikacji, kluczowy dla syntezatorów mowy (accessibility) i robotów indeksujących.</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;head&gt;</code></td>
+                                <td>Nagłówek dokumentu. Mieści metadane, konfigurację kodowania, linki do zewnętrznych arkuszy stylów oraz tytuł okna. Nie jest bezpośrednio renderowany na stronie.</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+                                <td>Definiuje uniwersalne kodowanie znaków standardu Unicode. Gwarantuje poprawne wyświetlanie polskich znaków diakrytycznych (ą, ć, ę, ł, ń, ó, ś, ź, ż).</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;meta name="viewport"...&gt;</code></td>
+                                <td>Kontroluje obszar wyświetlania na urządzeniach mobilnych. Skaluje szerokość strony do fizycznego ekranu urządzenia, eliminując błędy skalowania.</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;title&gt;</code></td>
+                                <td>Definiuje tekst wyświetlany na karcie przeglądarki oraz w wynikach wyszukiwania. Ma kolosalne znaczenie dla optymalizacji SEO.</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;body&gt;</code></td>
+                                <td>Główny korpus dokumentu. Zawiera wszystkie elementy wizualne, tekstowe i strukturalne prezentowane bezpośrednio użytkownikowi.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Anatomia znacznika</h3>
+                <p>Komunikacja z parserem przeglądarki opiera się na ściśle zdefiniowanej strukturze znaczników. Wyróżniamy dwa fundamentalne typy tagów:</p>
+                <ul class="points">
+                    <li><strong>Znaczniki sparowane:</strong> Składają się ze znacznika otwierającego, zawartości oraz znacznika zamykającego poprzedzonego znakiem slasha (np. <code>&lt;p&gt;Tekst&lt;/p&gt;</code>).</li>
+                    <li><strong>Znaczniki niesparowane (void / self-closing):</strong> Nie posiadają zawartości tekstowej ani tagu zamykającego, wprowadzają obiekt w miejsce swojego wystąpienia (np. <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;input&gt;</code>).</li>
+                </ul>
+
+                <div class="callout-box callout-info">
+                    <p>Modyfikacja zachowania znacznika odbywa się poprzez <strong>atrybuty</strong> umieszczane wyłącznie w znaczniku otwierającym, zapisywane w formacie: <code>nazwa_atrybutu="wartość"</code>. Przykładowo: <code>&lt;html lang="pl"&gt;</code>.</p>
+                </div>
+
+                <h3>Elementy blokowe vs liniowe (Block vs Inline)</h3>
+                <p>Sposób pozycjonowania elementów w naturalnym strumieniu dokumentu zależy od ich domyślnego typu wyświetlania:</p>
+                
+                <div class="table-responsive-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Cecha charakterystyczna</th>
+                                <th>Elementy Blokowe (Block)</th>
+                                <th>Elementy Liniowe (Inline)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Zajmowana przestrzeń</strong></td>
+                                <td>Rozciągają się automatycznie na 100% szerokości kontenera nadrzędnego.</td>
+                                <td>Zajmują tylko tyle miejsca, ile wynosi ich bezpośrednia zawartość.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Przełamanie linii</strong></td>
+                                <td>Zawsze zaczynają się od nowej linii i wymuszają przejście kolejnego elementu do nowej linii.</td>
+                                <td>Układają się w jednej linii obok siebie, dopóki starcza miejsca w kontenerze.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wymiarowanie (CSS)</strong></td>
+                                <td>W pełni respektują właściwości szerokości (<code>width</code>) oraz wysokości (<code>height</code>).</td>
+                                <td>Ignorują właściwości <code>width</code> oraz <code>height</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Marginesy i dopełnienia</strong></td>
+                                <td>Respektują marginesy i dopełnienia ze wszystkich czterech stron.</td>
+                                <td>Pionowe marginesy/dopełnienia nie odpychają sąsiednich elementów w strukturze dokumentu.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Przykłady z egzaminu</strong></td>
+                                <td><code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;-&lt;h6&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code>, <code>&lt;header&gt;</code></td>
+                                <td><code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;code&gt;</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Poniżej zaprezentowano zachowanie elementów blokowych oraz liniowych w naturalnym strumieniu renderowania:</p>
+                <div class="live-preview-box">
+                    <div class="preview-block">Blok 1 (zajmuje całą szerokość)</div>
+                    <div class="preview-block">Blok 2 (zaczyna od nowej linii)</div>
+                    <span class="preview-inline">Inline A</span>
+                    <span class="preview-inline">Inline B (obok siebie)</span>
+                    <span class="preview-inline">Inline C</span>
+                </div>
+
+                <h3>Nagłówki h1-h6: hierarchia i struktura</h3>
+                <p>Nagłówki od <code>&lt;h1&gt;</code> do <code>&lt;h6&gt;</code> budują zarys i strukturę dokumentu. Stopień <code>h1</code> jest najważniejszy i powinien pojawić się na stronie dokładnie jeden raz, reprezentując tytuł główny jednostki treści.</p>
+                
+                <div class="live-preview-box">
+                    <h1 style="font-family: var(--font-sans); margin-bottom:5px;">Nagłówek H1 - Tytuł Główny</h1>
+                    <h2 style="font-family: var(--font-sans); margin-bottom:5px; color:#334155; border: none; padding: 0;">Nagłówek H2 - Sekcja tematyczna</h2>
+                    <h3 style="font-family: var(--font-sans); margin-bottom:5px; color:var(--accent-color); margin-top: 0;">Nagłówek H3 - Podsekcja szczegółowa</h3>
+                    <h4 style="font-family: var(--font-sans); margin-bottom:5px; color:#475569; margin-top: 0;">Nagłówek H4 - Dalszy podział</h4>
+                    <h5 style="font-family: var(--font-sans); margin-bottom:5px; color:#64748b; margin-top: 0;">Nagłówek H5 - Poziom niski</h5>
+                    <h6 style="font-family: var(--font-sans); margin-bottom:5px; color:#94a3b8; margin-top: 0;">Nagłówek H6 - Najniższy poziom</h6>
+                </div>
+
+                <div class="callout-box callout-error">
+                    <p>Nigdy nie dobieraj poziomu nagłówka (np. zamiana h2 na h4) tylko dlatego, że potrzebujesz mniejszej czcionki! Rozmiar modyfikuje się wyłącznie za pomocą właściwości CSS <code>font-size</code>. Niepoprawna hierarchia tagów niszczy SEO oraz dostępność strony.</p>
+                </div>
+
+                <h3>Komentarze w kodzie źródłowym</h3>
+                <p>Komentarze są ignorowane przez silnik renderujący przeglądarki. Służą dokumentowaniu logiki budowy kodu lub czasowemu wyłączaniu fragmentów struktury podczas debugowania.</p>
+                <div class="code-block-container">
+                    <pre>&lt;!-- To jest poprawny komentarz HTML. Nie pojawi się na ekranie --&gt;</pre>
+                </div>
+            </section>
+
+            <section id="section2" class="topic-section">
+                <h2>2 — Formatowanie Tekstu i Semantyka</h2>
+                
+                <h3>Koncepcja HTML5 Semantic Web</h3>
+                <p>Semantyka polega na stosowaniu znaczników, które precyzyjnie opisują rolę i charakter danych znajdujących się wewnątrz nich, zamiast używania generycznego tagu <code>&lt;div&gt;</code> do wszystkiego. Poprawia to czytelność kodu dla innych, a przede wszystkim umożliwia robotom Google oraz oprogramowaniu dla osób niewidomych (screen readers) bezbłędną interpretację architektury informacji na stronie.</p>
+
+                <div class="table-responsive-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Znacznik semantyczny</th>
+                                <th>Przeznaczenie strukturalne w architekturze witryny</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>&lt;header&gt;</code></td>
+                                <td>Nagłówek witryny lub pojedynczej sekcji. Zazwyczaj zawiera logo, tytuł, oraz główną nawigację.</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;nav&gt;</code></td>
+                                <td>Blok przeznaczony wyłącznie na odnośniki nawigacyjne (menu główne, stopka linków, spis treści).</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;main&gt;</code></td>
+                                <td>Unikalna, główna treść właściwa danego dokumentu. Może wystąpić tylko raz w całym pliku.</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;section&gt;</code></td>
+                                <td>Tematyczna sekcja dokumentu, grupująca powiązane wpisy. Powinna posiadać własny nagłówek (h2-h6).</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;article&gt;</code></td>
+                                <td>Samodzielna, niezależna kompozycja treści, którą można wyciąć i dystrybuować niezależnie (np. wpis na blogu, artykuł prasowy).</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;aside&gt;</code></td>
+                                <td>Panel boczny. Zawiera treści powiązane pośrednio z głównym nurtem tekstu (reklamy, odnośniki do tagów, biogram autora).</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;footer&gt;</code></td>
+                                <td>Stopka dokumentu lub sekcji. Miejsce na prawa autorskie, dane kontaktowe, linki do polityki prywatności.</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;figure&gt;</code> + <code>&lt;figcaption&gt;</code></td>
+                                <td>Oznaczenie niezależnej zawartości ilustracyjnej (obraz, wykres, kod) wraz z jej jednoznacznym podpisem.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Kompleksowy przykład zagnieżdżenia strukturalnego</h3>
+                <p>Poniższy wzorzec odzwierciedla prawidłowo zaprojektowaną strukturę semantyczną nowoczesnej podstrony informacyjnej:</p>
+
+                <div class="code-block-container">
+<pre>&lt;header&gt;
+    &lt;h1&gt;Eko-Wyprawy Podróżnicze&lt;/h1&gt;
+    &lt;nav aria-label="Menu główne"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#home"&gt;Start&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#wyprawy"&gt;Kierunki&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+    &lt;section id="wyprawy"&gt;
+        &lt;h2&gt;Aktywne wyprawy w sezonie 2026&lt;/h2&gt;
+        &lt;article&gt;
+            &lt;header&gt;
+                &lt;h3&gt;Trekking po Fiordach Norwegii&lt;/h3&gt;
+                &lt;p&gt;Opublikowano: &lt;time datetime="2026-05-12"&gt;12 maja 2026&lt;/time&gt;&lt;/p&gt;
+            &lt;/header&gt;
+            &lt;p&gt;Wyprawa dedykowana dla osób z zaawansowaną kondycją fizyczną...&lt;/p&gt;
+            &lt;footer&gt;
+                &lt;p&gt;Kategoria: Skandynawia&lt;/p&gt;
+            &lt;/footer&gt;
+        &lt;/article&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+&lt;footer&gt;
+    &lt;address&gt;Kontakt: biuro@eko-wyprawy.pl&lt;/address&gt;
+    &lt;p&gt;&amp;copy; 2026 Eko-Wyprawy. Wszelkie prawa zastrzeżone.&lt;/p&gt;
+&lt;/footer&gt;</pre>
+                </div>
+
+                <h3>Formatowanie liniowe: Efekt wizualny a znaczenie semantyczne</h3>
+                <p>Egzamin CKE kładzie ogromny nacisk na rozróżnianie tagów czysto prezentacyjnych od tagów niosących informację logiczną dla maszyn przetwarzających tekst.</p>
+
+                <div class="table-responsive-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Tag</th>
+                                <th>Domyślny wygląd</th>
+                                <th>Znaczenie semantyczne (Interpretacja przez przeglądarkę)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>&lt;strong&gt;</code></td>
+                                <td>Pogrubienie</td>
+                                <td><strong>Ważna treść o wysokim priorytecie (Strong Importance). Bardzo ważne ostrzeżenie.</strong></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;b&gt;</code></td>
+                                <td>Pogrubienie</td>
+                                <td><b>Stylistyczne wyróżnienie tekstu bez nadawania mu dodatkowego znaczenia ważności.</b></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;u&gt;</code></td>
+                                <td>Podkreślenie</td>
+                                <td><u>Tekst podkreślony, podkreślając uwagę, wyróżniając go w kontekście.</u></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;em&gt;</code></td>
+                                <td>Kursywa</td>
+                                <td><em>Tekst akcentowany emfatycznie (Emphasized text), zmieniający wydźwięk zdania.</em></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;i&gt;</code></td>
+                                <td>Kursywa</td>
+                                <td><i>Tekst alternatywny (np. termin techniczny, zwrot obcojęzyczny, nazwa statku).</i></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;sup&gt;</code></td>
+                                <td>Indeks górny</td>
+                                <td>Tekst<sup>wyświetlany jako indeks górny.</sup>, używany np. w notacji matematycznej</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;sub&gt;</code></td>
+                                <td>Indeks dolny</td>
+                                <td>Tekst<sub>wyświetlany jako indeks dolny.</sub>, używany np. w wzorach chemicznych</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;mark&gt;</code></td>
+                                <td>Żółte tło</td>
+                                <td><mark>Tekst zakreślony / wyróżniony ze względu na jego kontekstowe znaczenie w wyszukiwaniu.</mark></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;del&gt;</code></td>
+                                <td>Przekreślenie</td>
+                                <td><del>Treść, która została usunięta z dokumentu podczas jego aktualizacji.</del></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;ins&gt;</code></td>
+                                <td>Podkreślenie</td>
+                                <td><ins>Treść wprowadzona do dokumentu jako nowa poprawka w stosunku do starej wersji.</ins></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;code&gt;</code></td>
+                                <td>Monospace</td>
+                                <td><code>Fragment kodu komputerowego. Zapobiega interpretacji czcionki proporcjonalnej.</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;kbd&gt;</code></td>
+                                <td>Monospace</td>
+                                <td><kbd> wejściowe użytkownika, najczęściej klawisze z klawiatury fizycznej (np. Ctrl)</kbd>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;abbr&gt;</code></td>
+                                <td>Kropkowane podkr.skrótu</td>
+                                <td><abbr title="Skrót">Atrybut title przechowuje pełne rozwinięcie skrótu.</abbr></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>Wizualna manifestacja różnorodnych znaczników formatowania liniowego na żywo:</p>
+                <div class="live-preview-box">
+                    <p>Aby zapisać plik, użyj skrótu <strong><kbd>Ctrl</kbd> + <kbd>S</kbd></strong> w programie <code class="inline-code">VS Code</code>.</p>
+                    <p>Cena promocyjna kursu wynosi <del>350 PLN</del> <ins>210 PLN</ins>. Oferta ważna tylko dla członków <abbr title="Polskie Towarzystwo Informatyczne">PTI</abbr>.</p>
+                    <p>Wzór chemiczny kwasu siarkowego to H<sub>2</sub>SO<sub>4</sub>, a pole powierzchni kwadratu wynosi a<sup>2</sup>.</p>
+                </div>
+
+                <h3>Bloki tekstowe i złota zasada łamania linii</h3>
+                <p>Do budowy standardowych akapitów służy znacznik blokowy <code>&lt;p&gt;</code>. Wymuszenie przejścia do nowej linii bez domyślnego tworzenia odstępu międzyakapitowego realizuje znacznik niesparowany <code>&lt;br&gt;</code>. Do prezentacji preformatowanego tekstu (gdzie zachowane są wszystkie spacje i entery wprowadzone w edytorze) dedykowany jest znacznik <code>&lt;pre&gt;</code>.</p>
+
+                <div class="callout-box callout-error">
+                    <p><strong>ZAKAZ EGZAMINACYJNY:</strong> Nigdy nie używaj wielokrotnych znaczników <code>&lt;br&gt;&lt;br&gt;&lt;br&gt;</code> w celu generowania pustej przestrzeni i sztucznego odpychania elementów na ekranie! Do kontrolowania przerw i układu graficznego służą wyłącznie właściwości CSS: <code>margin</code> oraz <code>padding</code>.</p>
+                </div>
+
+                <h3>Encje HTML (Znaki specjalne)</h3>
+                <p>Służą do wprowadzania znaków zastrzeżonych dla składni HTML lub niedostępnych bezpośrednio na standardowej klawiaturze.</p>
+                <div class="table-responsive-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Znak</th>
+                                <th>Encja tekstowa</th>
+                                <th>Zastosowanie praktyczne</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&lt;</td>
+                                <td><code>&amp;lt;</code></td>
+                                <td>Znak mniejszości. Zapobiega interpretacji tekstu jako otwarcia nowego tagu HTML.</td>
+                            </tr>
+                            <tr>
+                                <td>&gt;</td>
+                                <td><code>&amp;gt;</code></td>
+                                <td>Znak większości. Bezpieczne wypisanie zamknięcia tagu w celach edukacyjnych.</td>
+                            </tr>
+                            <tr>
+                                <td>&amp;</td>
+                                <td><code>&amp;amp;</code></td>
+                                <td>Znak ampersand, rozpoczynający deklarację encji w dokumencie.</td>
+                            </tr>
+                            <tr>
+                                <td>&quot;</td>
+                                <td><code>&amp;quot;</code></td>
+                                <td>Podwójne cudzysłowie, używane do oznaczenia cytatu lub innych elementów tekstowych.</td>
+                            </tr>
+                            <tr>
+                                <td> </td>
+                                <td><code>&amp;nbsp;</code></td>
+                                <td>Twarda spacja (Non-breaking space). Zapobiega rozrywaniu jednoznakowych spójników na końcu linii.</td>
+                            </tr>
+                            <tr>
+                                <td>&mdash;</td>
+                                <td><code>&amp;mdash;</code></td>
+                                <td>Podwójna kreska, używana do oznaczenia połączenia linii.</td>
+                            </tr>
+                            <tr>
+                                <td>&copy;</td>
+                                <td><code>&amp;copy;</code></td>
+                                <td>Symbol praw autorskich umieszczany tradycyjnie w stopce witryny.</td>
+                            </tr>
+                            <tr>
+                                <td>&euro;</td>
+                                <td><code>&amp;euro;</code></td>
+                                <td>Symbol waluty euro.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="section3" class="topic-section">
+                <h2>3 — Listy i Wyliczenia</h2>
+                
+                <h3>Lista nieuporządkowana &lt;ul&gt; oraz uporządkowana &lt;ol&gt;</h3>
+                <p>Listy stanowią logiczną podstawę agregacji danych pokrewnych. Lista <code>&lt;ul&gt;</code> (unordered list) służy do wypunktowania elementów, gdzie kolejność nie ma znaczenia. Lista <code>&lt;ol&gt;</code> (ordered list) tworzy sekwencję numerowaną, sterowaną atrybutami strukturalnymi:</p>
+                <ul class="points">
+                    <li><code>type</code> - określa typ numeracji: <code>1</code> (arabskie), <code>A</code>/<code>a</code> (wielkie/małe litery), <code>I</code>/<code>i</code> (rzymskie).</li>
+                    <li><code>start</code> - definiuje wartość numeryczną, od której zestawienie ma rozpocząć odliczanie kroków.</li>
+                </ul>
+
+                <h3>Warianty list uporządkowanych (porównanie obok siebie)</h3>
+                <div class="live-preview-box" style="display: flex; flex-wrap: wrap; gap: 40px;">
+                    <div>
+                        <p><strong>Typ domyślny (1):</strong></p>
+                        <ol class="ListTypes" type="1" start="1">
+                            <li>Parzenie espresso</li>
+                            <li>Spienianie mleka</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <p><strong>Typ rzymski (I):</strong></p>
+                        <ol class="ListTypes"type="I" start="5">
+                            <li>Etap Piąty</li>
+                            <li>Etap Szósty</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <p><strong>Typ literowy (a):</strong></p>
+                        <ol class="ListTypes"type="a" start="3">
+                            <li>Opcja trzecia</li>
+                            <li>Opcja czwarta</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h3>Lista nieuporządkowana</h3>
+                <div class="live-preview-box" style="display: flex; flex-wrap: wrap; gap: 40px;">
+                    <div>
+                        <ul class="ListTypes">
+                            <li>Przepisy</li>
+                            <li>Zdjęcia</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Lista definicji &lt;dl&gt; (Słowniki i Glosariusze)</h3>
+                <p>Lista definicji (definition list) nie korzysta ze standardowych znaczników <code>&lt;li&gt;</code>. Składa się z powtarzalnych par: termin do zdefiniowania <code>&lt;dt&gt;</code> oraz opis/definicja tego terminu <code>&lt;dd&gt;</code>.</p>
+                <div class="code-block-container">
+<pre>&lt;dl&gt;
+    &lt;dt&gt;Repository&lt;/dt&gt;
+    &lt;dd&gt;Przestrzeń dyskowa, w której Git przechowuje historię zmian projektu.&lt;/dd&gt;
+    &lt;dt&gt;Commit&lt;/dt&gt;
+    &lt;dd&gt;Zatwierdzenie i trwałe zapisanie lokalnych zmian w repozytorium.&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+                </div>
+
+                <h3>Zagnieżdżanie list (Zasady strukturalne)</h3>
+                <p>Tworzenie wielopoziomowych struktur nawigacyjnych lub spisów treści wymaga bezbłędnego zagnieżdżania elementów. Podrzędna lista musi w całości leżeć wewnątrz konkretnego elementu listy nadrzędnej.</p>
+
+                <div class="code-block-container">
+<pre>&lt;!-- POPRAWNA STRUKTURA ZAGNIEŻDŻENIA --&gt;
+&lt;ul&gt;
+    &lt;li&gt;Kuchnia Europejska
+        &lt;ol&gt;
+            &lt;li&gt;Zupa cebulowa&lt;/li&gt;
+            &lt;li&gt;Gulasz węgierski&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt; &lt;!-- Zamknięcie elementu nadrzędnego PO liście wewnętrznej --&gt;
+    &lt;li&gt;Kuchnia Azjatycka&lt;/li&gt;
+&lt;/ul&gt;</pre>
+                </div>
+
+                <h3>Stylizacja markerów list w CSS</h3>
+                <p>Za wygląd wypunktowania odpowiada właściwość CSS <code>list-style-type</code>. Poniższy podgląd prezentuje cztery podstawowe wartości tej właściwości:</p>
+                
+                <div class="live-preview-box">
+                    <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 8px;">
+                        <li>Wartość <code>disc</code> (Domyślna kropka)</li>
+                    </ul>
+                    <ul style="list-style-type: circle; padding-left: 20px; margin-bottom: 8px;">
+                        <li>Wartość <code>circle</code> (Okrąg bez wypełnienia)</li>
+                    </ul>
+                    <ul style="list-style-type: square; padding-left: 20px; margin-bottom: 8px;">
+                        <li>Wartość <code>square</code> (Kwadratowe wypunktowanie)</li>
+                    </ul>
+                    <ul style="list-style-type: none; padding-left: 20px;">
+                        <li>Wartość <code>none</code> (Brak markera - stosowane w menu nawigacyjnym)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="section4" class="topic-section">
+                <h2>4 — Hiperłącza i Zasoby Graficzne</h2>
+                
+                <h3>Atrybut href i typy odnośników</h3>
+                <p>Znacznik <code>&lt;a&gt;</code> (anchor) tworzy powiązania hipertekstowe. Zachowanie linku zależy bezpośrednio od struktury przypisanego adresu w atrybucie <code>href</code>.</p>
+
+                <div class="table-responsive-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Typ zapisu w href</th>
+                                <th>Przykład składniowy</th>
+                                <th>Efekt wywołania i zachowanie przeglądarki</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>URL Absolutny</strong></td>
+                                <td><code>href="https://google.com"</code></td>
+                                <td>Opuszczenie bieżącej domeny i przejście pod pełny zewnętrzny adres sieciowy wraz z protokołem.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ścieżka Względna</strong></td>
+                                <td><code>href="galeria.html"</code></td>
+                                <td>Nawigacja wewnątrzstrukturalna do pliku zlokalizowanego na tym samym serwerze względem pliku bieżącego.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kotwica lokalna</strong></td>
+                                <td><code>href="#sekcja3"</code></td>
+                                <td>Przewinięcie widoku strony do elementu posiadającego identyfikator o unikalnej nazwie <code>id="sekcja3"</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Link Poczty</strong></td>
+                                <td><code>href="mailto:sekretariat@szkola.pl"</code></td>
+                                <td>Uruchomienie domyślnego klienta e-mail zainstalowanego w systemie operacyjnym z wpisanym adresem odbiorcy.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Link Telefoniczny</strong></td>
+                                <td><code>href="tel:+48123456789"</code></td>
+                                <td>Inicjacja połączenia telefonicznego (funkcja natywna na urządzeniach mobilnych i smartfonach).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pusta kotwica</strong></td>
+                                <td><code>href="#"</code></td>
+                                <td>Przewinięcie dokumentu na samą górę. Stosowana jako placeholder podczas dewelopmentu.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Atrybuty zaawansowane odnośników</h3>
+                <p>Otwieranie stron zewnętrznych w nowej karcie realizuje się za pomocą deklaracji <code>target="_blank"</code>. Ze względów wydajnościowych oraz bezpieczeństwa (ataki typu Tabnabbing) należy bezwzględnie dopisywać do takiego linku atrybut zabezpieczający: <code>rel="noopener noreferrer"</code>. Dopisywany atrybut <code>download</code> wymusza pobranie zasobu na dysk lokalny zamiast jego domyślnego otwarcia w oknie przeglądarki (np. plików PDF czy obrazów).</p>
+
+                <h3>Osadzanie grafiki za pomocą &lt;img&gt;</h3>
+                <p>Znacznik niesparowany <code>&lt;img&gt;</code> odpowiada za renderowanie zasobów rastrowych i wektorowych na stronie.</p>
+                <div class="code-block-container">
+<pre>&lt;img src="zasoby/logo-serwisu.jpg" 
+     alt="Logotyp firmy TechCorp z niebieskim sygnetem koła zębatego" 
+     width="250" 
+     height="80" 
+     loading="lazy" 
+     title="Oficjalne logo TechCorp"&gt;</pre>
+                </div>
+
+                <div class="callout-box callout-info">
+                    <p><strong>Rola atrybutu ALT (Alternatywny Opis):</strong> Jest to atrybut <strong>obligatoryjny</strong>. Opisuje zawartość grafiki w przypadku błędu wczytywania pliku oraz dla czytników ekranowych. Dla grafik czysto dekoracyjnych (np. tła, linie ozdobne), które nie wnoszą treści merytorycznej, należy pozostawić pusty atrybut: <code>alt=""</code>, aby czytniki nie rozpraszały użytkownika.</p>
+                </div>
+
+                <h3>Graficzny link oraz schemat Figure i Figcaption</h3>
+                <p>W celu przekształcenia obrazu w klikalny link, cały znacznik <code>&lt;img&gt;</code> zagnieżdża się wewnątrz kontenera hiperłącza <code>&lt;a&gt;</code>. Z kolei powiązanie grafiki z jej podpisem w nowoczesnym HTML5 realizuje dedykowany tag semantyczny <code>&lt;figure&gt;</code>.</p>
+
+                <div class="live-preview-box">
+                    <figure style="border: 1px solid var(--border-color); padding: 12px; background: white; max-width: 320px; border-radius: 6px;">
+                        <a href="#section5">
+                            <div style="width: 100%; height: 140px; background-color: #cbd5e1; display:flex; align-items:center; justify-content:center; color:#475569; font-weight:bold; border-radius:4px;">
+                                <img scr="logo.png" alt="[ KLIKALNY OBRAZ ]">
+                            </div>
+                        </a>
+                        <figcaption style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; text-align: center; font-style: italic;">
+                            Rysunek 4.1: Podgląd elementu graficznego pełniącego rolę hiperłącza wewnętrznego.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <h3>Zasady adresowania ścieżek do plików</h3>
+                <p>Zrozumienie nawigacji po drzewie katalogów serwera jest kluczem do zaliczenia kryterium osadzania mediów na egzaminie praktycznym.</p>
+                
+                <div class="table-responsive-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Zapis ścieżki (Składnia)</th>
+                                <th>Lokalizacja pliku docelowego względem pliku HTML</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>src="foto.png"</code></td>
+                                <td>Plik graficzny znajduje się w tym samym, identycznym folderze co plik HTML.</td>
+                            </tr>
+                            <tr>
+                                <td><code>src="images/foto.png"</code></td>
+                                <td>Plik znajduje się w podfolderze o nazwie <code>images</code>, umieszczonym tam gdzie plik HTML.</td>
+                            </tr>
+                            <tr>
+                                <td><code>src="../foto.png"</code></td>
+                                <td>Wyjście o jeden poziom wyżej w strukturze drzewa katalogów (do folderu nadrzędnego).</td>
+                            </tr>
+                            <tr>
+                                <td><code>src="../../assets/img/foto.png"</code></td>
+                                <td>Wyjście o dwa foldery wyżej, wejście do katalogu <code>assets</code>, a następnie do podfolderu <code>img</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>src="/assets/logo.png"</code></td>
+                                <td>Ścieżka bezwzględna od korzenia serwera (Server Root). Zaczyna przeszukiwanie od katalogu głównego projektu.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="section5" class="topic-section">
+                <h2>5 — Tabele Standardowe i Złożone</h2>
+                
+                <h3>Struktura semantyczna tabeli HTML5</h3>
+                <p>Nowoczesny standard HTML5 wymaga, aby dane tabelaryczne były podzielone na logiczne sekcje. Tradycyjne tworzenie tabeli za pomocą samych znaczników <code>&lt;tr&gt;</code> i <code>&lt;td&gt;</code> powoduje utratę punktów na egzaminie. Poprawnie skonstruowana tabela musi zawierać:</p>
+                <ul class="points">
+                    <li><code>&lt;table&gt;</code> - Kontener główny struktury.</li>
+                    <li><code>&lt;caption&gt;</code> - Nagłówek/tytuł tabeli (musi być pierwszym dzieckiem <code>&lt;table&gt;</code>).</li>
+                    <li><code>&lt;thead&gt;</code> - Sekcja nagłówkowa, przechowująca wiersze z komórkami nagłówkowymi <code>&lt;th&gt;</code>.</li>
+                    <li><code>&lt;tbody&gt;</code> - Główny korpus tabeli, zawierający wiersze <code>&lt;tr&gt;</code> z danymi <code>&lt;td&gt;</code>.</li>
+                    <li><code>&lt;tfoot&gt;</code> - Stopka tabeli, podsumowująca wartości liczbowe lub statystyczne.</li>
+                </ul>
+
+                <h3>Kompleksowe łączenie komórek: colspan i rowspan</h3>
+                <p>Modyfikacja geometrii tabeli odbywa się za pomocą dwóch kluczowych atrybutów strukturalnych:</p>
+                <ul class="points">
+                    <li><code>colspan="wartość"</code> - Scala komórki <strong>w poziomie</strong> (kolumny). Komórka rozszerza się w prawo.</li>
+                    <li><code>rowspan="wartość"</code> - Scala komórki <strong>w pionie</strong> (wiersze). Komórka rozszerza się w dół.</li>
+                </ul>
+
+                <div class="callout-box callout-exam">
+                    <p><strong>ZŁOTA ZASADA ROWSPAN:</strong> Jeśli komórka w wierszu pierwszym ma atrybut <code>rowspan="2"</code>, to fizycznie zajmuje ona przestrzeń wiersza drugiego. Projektując wiersz drugi w kodzie HTML, <strong>musisz pominąć</strong> jedną komórkę <code>&lt;td&gt;</code>. Nadmiarowa komórka spowoduje "rozjechanie się" tabeli na ekranie!</p>
+                </div>
+
+                <h3>Tabelka zaawansowana</h3>
+                <p>Poniższy przykład prezentuje złożony podział rezerwacji sal konferencyjnych i modułów szkoleniowych, symulując trudne zadanie konstrukcyjne z arkusza INF.03.</p>
+
+                <div class="code-block-container">
+<pre>&lt;table class="exam-complex-table"&gt;
+    &lt;caption&gt;Harmonogram Obciążenia Sal i Stref Konferencyjnych&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Strefa obiektu&lt;/th&gt;
+            &lt;th scope="col"&gt;Sala A (Główna)&lt;/th&gt;
+            &lt;th scope="col"&gt;Sala B (Kameralna)&lt;/th&gt;
+            &lt;th scope="col"&gt;Status techniczny&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th scope="row" rowspan="2"&gt;Sektor Północny (Piętro 1)&lt;/th&gt;
+            &lt;td&gt;Warsztaty programowania Java&lt;/td&gt;
+            &lt;td&gt;Konsultacje UX/UI&lt;/td&gt;
+            &lt;td rowspan="3" style="vertical-align: middle; text-align: center;"&gt;Pełna dostępność&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td colspan="2" style="text-align: center; font-weight: bold;"&gt;Przerwa networkingowa i catering&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;Sektor Południowy (Parter)&lt;/th&gt;
+            &lt;td&gt;Egzamin próbny INF.03&lt;/td&gt;
+            &lt;td&gt;Konfiguracja routerów Cisco&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td colspan="3"&gt;Łączny czas rezerwacji strefowych:&lt;/td&gt;
+            &lt;td&gt;12 godzin&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</pre>
+                </div>
+
+                <p>Renderowanie powyższej tabeli wraz ze stylizacją krawędzi i dopełnień w przeglądarce:</p>
+                <div class="live-preview-box">
+                    <table style="width:100%; border-collapse: collapse; font-size: 0.85rem; background: white; border: 1px solid #cbd5e1;">
+                        <caption style="font-weight: bold; margin-bottom: 10px; color: var(--bg-sidebar); text-align: left; font-size: 0.95rem;">Harmonogram Obciążenia Sal i Stref Konferencyjnych</caption>
+                        <thead>
+                            <tr style="background-color: #f1f5f9;">
+                                <th scope="col" style="border: 1px solid #cbd5e1; padding: 10px; font-weight: 700; text-align: left;">Strefa obiektu</th>
+                                <th scope="col" style="border: 1px solid #cbd5e1; padding: 10px; font-weight: 700; text-align: left;">Sala A (Główna)</th>
+                                <th scope="col" style="border: 1px solid #cbd5e1; padding: 10px; font-weight: 700; text-align: left;">Sala B (Kameralna)</th>
+                                <th scope="col" style="border: 1px solid #cbd5e1; padding: 10px; font-weight: 700; text-align: left;">Status techniczny</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" rowspan="2" style="border: 1px solid #cbd5e1; padding: 10px; background: #f8fafc; font-weight: 600; text-align: left; vertical-align: top;">Sektor Północny (Piętro 1)</th>
+                                <td style="border: 1px solid #cbd5e1; padding: 10px;">Warsztaty programowania Java</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 10px;">Konsultacje UX/UI</td>
+                                <td rowspan="3" style="border: 1px solid #cbd5e1; padding: 10px; vertical-align: middle; text-align: center; background-color: #f0fdf4; color: #166534; font-weight: bold;">Pełna dostępność</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border: 1px solid #cbd5e1; padding: 10px; text-align: center; font-weight: bold; background-color: #fffbeb; color: #9a3412;">Przerwa networkingowa i catering</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" style="border: 1px solid #cbd5e1; padding: 10px; background: #f8fafc; font-weight: 600; text-align: left;">Sektor Południowy (Parter)</th>
+                                <td style="border: 1px solid #cbd5e1; padding: 10px;">Egzamin próbny INF.03</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 10px;">Konfiguracja routerów Cisco</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr style="background-color: #f8fafc; font-weight: bold;">
+                                <td colspan="3" style="border: 1px solid #cbd5e1; padding: 10px; text-align: right;">Łączny czas rezerwacji strefowych:</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 10px; text-align: center;">12 godzin</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <h3>Tabelka zagnieżdżona</h3>
+                <p>Poniższy przykład prezentuje strukturę, w której jedna z komórek głównego harmonogramu zawiera w sobie osobną, wewnętrzną tabelę szczegółową opisującą agendę techniczną.</p>
+
+                <div class="code-block-container">
+<pre>&lt;table class="exam-complex-table"&gt;
+    &lt;caption&gt;Harmonogram Obciążenia Sal i Stref Konferencyjnych&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Strefa obiektu&lt;/th&gt;
+            &lt;th scope="col"&gt;Główny blok zajęć&lt;/th&gt;
+            &lt;th scope="col"&gt;Szczegółowa agenda techniczna (Tabela zagnieżdżona)&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;Sektor Północny&lt;/th&gt;
+            &lt;td&gt;Egzamin próbny INF.03&lt;/td&gt;
+            &lt;td&gt;
+                &lt;table&gt;
+                    &lt;thead&gt;
+                        &lt;tr&gt;
+                            &lt;th&gt;Godzina&lt;/th&gt;
+                            &lt;th&gt;Zadanie&lt;/th&gt;
+                        &lt;/tr&gt;
+                    &lt;/thead&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;08:00&lt;/td&gt;
+                            &lt;td&gt;Konfiguracja stacji roboczych&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;10:00&lt;/td&gt;
+                            &lt;td&gt;Część praktyczna (HTML/CSS)&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+                &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;Sektor Południowy&lt;/th&gt;
+            &lt;td&gt;Warsztaty Cisco&lt;/td&gt;
+            &lt;td&gt;Weryfikacja okablowania strukturalnego WAN&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table></pre>
+                </div>
+
+                <p>Renderowanie tabeli zagnieżdżonej w przeglądarce:</p>
+                <div class="live-preview-box">
+                    <table style="width:100%; border-collapse: collapse; font-size: 0.85rem; background: white; border: 1px solid #cbd5e1;">
+                        <caption style="font-weight: bold; margin-bottom: 10px; color: var(--bg-sidebar); text-align: left; font-size: 0.95rem;">Harmonogram Obciążenia Sal i Stref Konferencyjnych</caption>
+                        <thead>
+                            <tr style="background-color: #f1f5f9;">
+                                <th scope="col" style="border: 1px solid #cbd5e1; padding: 10px; font-weight: 700; text-align: left;">Strefa obiektu</th>
+                                <th scope="col" style="border: 1px solid #cbd5e1; padding: 10px; font-weight: 700; text-align: left;">Główny blok zajęć</th>
+                                <th scope="col" style="border: 1px solid #cbd5e1; padding: 10px; font-weight: 700; text-align: left;">Szczegółowa agenda techniczna (Tabela zagnieżdżona)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="border: 1px solid #cbd5e1; padding: 10px; background: #f8fafc; font-weight: 600; text-align: left;">Sektor Północny</th>
+                                <td style="border: 1px solid #cbd5e1; padding: 10px;">Egzamin próbny INF.03</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 10px;">
+                                    <table style="width: 100%; border-collapse: collapse; border: 1px dashed #3b7d8c; font-size: 0.8rem; background-color: #fafafa;">
+                                        <thead>
+                                            <tr style="background-color: #e6eff2; color: #1e3a5f;">
+                                                <th style="border: 1px solid #cbd5e1; padding: 5px;">Godzina</th>
+                                                <th style="border: 1px solid #cbd5e1; padding: 5px;">Zadanie</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="border: 1px solid #cbd5e1; padding: 5px;">08:00</td>
+                                                <td style="border: 1px solid #cbd5e1; padding: 5px;">Konfiguracja stacji roboczych</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 1px solid #cbd5e1; padding: 5px;">10:00</td>
+                                                <td style="border: 1px solid #cbd5e1; padding: 5px;">Część praktyczna (HTML/CSS)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" style="border: 1px solid #cbd5e1; padding: 10px; background: #f8fafc; font-weight: 600; text-align: left;">Sektor Południowy</th>
+                                <td style="border: 1px solid #cbd5e1; padding: 10px;">Warsztaty Cisco</td>
+                                <td style="border: 1px solid #cbd5e1; padding: 10px; color: #64748b; font-style: italic;">Weryfikacja okablowania strukturalnego WAN</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout-box callout-exam">
+                    <p><strong>ZASADA ZAGANIEŻDŻANIA (NESTING):</strong> Aby tabela zagnieżdżona nie złamała walidacji HTML5, musi znajdować się <strong>w całości wewnątrz kontenera danych</strong>, czyli w znaczniku <code>&lt;td&gt;</code> lub <code>&lt;th&gt;</code>. Niedopuszczalne jest wstawianie tagu <code>&lt;table&gt;</code> bezpośrednio pomiędzy wierszami <code>&lt;tr&gt;</code>.</p>
+                </div>
+                <h3>Dostępność (Accessibility) a atrybut scope</h3>
+                <p>W celu spełnienia wymogów standardów WCAG, każda komórka nagłówkowa <code>&lt;th&gt;</code> musi definiować kierunek swojego oddziaływania za pomocą atrybutu <code>scope</code>: <code>scope="col"</code> (kolumna) lub <code>scope="row"</code> (wiersz).</p>
+            </section>
+
+            <section id="section6" class="topic-section">
+                <h2>6 — Kaskadowość, Dziedziczenie i Rdzeń CSS</h2>
+                
+                <h3>Trzy metody implementacji arkuszy stylów</h3>
+                <p>Style CSS mogą zostać połączone z dokumentem HTML na trzy różne sposoby. Dobór metody zależy od przeznaczenia kodu:</p>
+                <ul class="points">
+                    <li><strong>Zewnętrzny arkusz:</strong> <code>&lt;link rel="stylesheet" href="style.css"&gt;</code> - Najlepsza praktyka. Jeden plik formatuje cały serwis.</li>
+                    <li><strong>Wewnętrzny arkusz:</strong> <code>&lt;style&gt; h1 { color: red; } &lt;/style&gt;</code> - Używany dla pojedynczych stron o specyficznym wyglądzie lub w arkuszach egzaminacyjnych.</li>
+                    <li><strong>Styl liniowy (Inline):</strong> <code>&lt;div style="color: blue;"&gt;</code> - Antywzorzec. Używany wyłącznie do szybkich testów lub dynamicznych wstrzyknięć kodu.</li>
+                </ul>
+
+                <h3>Przegląd selektorów i kombinatorów w jednym bloku</h3>
+                <div class="code-block-container">
+                    <pre>
+/* Selektor elementu, klasy i ID */
+article { line-height: 1.8; }
+.item-active { background-color: #e6eff2; }
+#main-footer { border-top: 1px solid #ccc; }
+
+/* Selektor atrybutu */
+a[title] { color: #007bff; }
+input[type="text"] { border: 1px solid #ccc; padding: 6px; }
+
+/* Pseudoklasy (stan elementu) i Pseudoelementy */
+a:hover { color: #c27b8a; text-decoration: underline; }
+li:nth-child(2n) { background-color: #f8fafc; } /* Co drugi element */
+p::first-letter { font-size: 2em; font-weight: bold; }
+
+/* Kombinatorzy (relacje) */
+div p { color: #333; }       /* Potomek (wszystkie p wewnątrz div) */
+div > p { color: #000; }     /* Dziecko (tylko bezpośrednie p w div) */
+h2 + p { margin-top: 0; }    /* Rodzeństwo przylegające (pierwsze p bezpośrednio po h2) */
+h2 ~ p { color: #555; }      /* Rodzeństwo ogólne (wszystkie p po h2) */
+                    </pre>
+                </div>
+
+                <h3>Waga selektorów i Kaskada (Specificity Hierarchy)</h3>
+                <p>Gdy do jednego elementu odnoszą się sprzeczne reguły CSS, przeglądarka oblicza wagę selektora na podstawie hierarchicznego systemu punktacji:</p>
+                <ol class="points">
+                    <li>Modyfikator <code>!important</code> - Nadpisuje absolutnie wszystko. - 1st</li>
+                    <li>Styl liniowy (Atrybut <code>style=""</code>) - 2nd</li>
+                    <li>Identyfikatory (Selektory typu <code>#id</code>) - 3rd</li>
+                    <li>Klasy, atrybuty i pseudoklasy (<code>.klasa</code>, <code>:hover</code>) - 4th</li>
+                    <li>Nazwy znaczników i pseudoelementy (<code>div</code>, <code>p</code>, <code>::before</code>) - 5th</li>
+                </ol>
+
+                <div class="callout-box callout-error">
+                    <p><strong>BŁĄD:</strong> Nadużywanie flagi <code>!important</code> w celu łatwego naprawiania błędów w stylach. Blokuje to działanie kaskady i uniemożliwia dalszy rozwój kodu.</p>
+                </div>
+
+                <h3>Mechanizm dziedziczenia właściwości CSS</h3>
+                <p>Nie wszystkie właściwości CSS przypisane do rodzica przechodzą na dzieci. Właściwości tekstowe i czcionek (<code>font-family</code>, <code>color</code>, <code>line-height</code>, <code>text-align</code>) **podlegają** dziedziczeniu. Właściwości geometrii, układy i Box Model (<code>width</code>, <code>height</code>, <code>margin</code>, <code>padding</code>, <code>border</code>, <code>display</code>) **nie podlegają** dziedziczeniu.</p>
+
+                <h3>Kompletny przegląd jednostek miar CSS</h3>
+                <p>Jednostki miar w CSS dzielimy na dwie główne kategorie: <strong>bezwzględne</strong> (absolute), które mają stałą wartość niezależną od ekranu czy ustawień użytkownika, oraz <strong>względne</strong> (relative), których wielkość zależy od innych parametrów (np. wielkości czcionki rodzica, rozmiaru okna przeglądarki).</p>
+
+                <h4>1. Jednostki Względne Typograficzne (Font-Relative)</h4>
+                <ul class="points">
+                    <li><code>em</code> - Mnożnik czcionki elementu-rodzica (w którym aktualnie się znajduje)</li>
+                    <li><code>rem</code> - Mnożnik czcionki głównej (znacznika <code>&lt;html&gt;</code>).</li>
+                    <li><code>ex</code> - Odpowiada wysokości małej litery „x” w bieżącym kroju czcionki.</li>
+                    <li><code>ch</code> - Odpowiada szerokości znaku zero „0” dla wybranej czcionki.</li>
+                    <li><code>lh</code> - Odnosi się do wysokości linii (<code>line-height</code>) bieżącego elementu.</li>
+                    <li><code>rlh</code> - Odnosi się do wysokości linii (<code>line-height</code>) elementu głównego (root).</li>
+                </ul>
+
+                <h4>2. Jednostki Względne Okna Przeglądarki (Viewport-Relative)</h4>
+                <ul class="points">
+                    <li><code>vw</code> (Viewport Width) - 1% całkowitej szerokości okna przeglądarki.</li>
+                    <li><code>vh</code> (Viewport Height) - 1% całkowitej wysokości okna przeglądarki.</li>
+                    <li><code>vmin</code> - Odnosi się do 1% z mniejszej wartości w danym momencie (szerokości lub wysokości okna).</li>
+                    <li><code>vmax</code> - Odnosi się do 1% z większej wartości w danym momencie (szerokości lub wysokości okna).</li>
+                    <li><code>vi</code> / <code>vb</code> - Jednostki kierunkowe (Inline / Block) zależne od trybu zapisu tekstu (przydatne przy językach pisanych pionowo).</li>
+                </ul>
+
+                <h4>3. Jednostki Bezwzględne (Absolute)</h4>
+                <ul class="points">
+                    <li><code>px</code> (Piksele) - 1px odpowiada 1 punktowi na siatce ekranu urządzenia.</li>
+                    <li><code>cm</code> (Centymetry) - 1cm odpowiada 37.8 pikselom.</li>
+                    <li><code>mm</code> (Milimetry) - 1mm odpowiada 3.78 pikselom.</li>
+                    <li><code>in</code> (Cale) - 1 cal to dokładnie 2.54 cm, oraz równowartość 96 pikseli.</li>
+                    <li><code>pt</code> (Punkty) - 1pt odpowiada 1/72 cala, czyli 1.33 piksela.</li>
+                    <li><code>pc</code> (Piki) - Kolejna jednostka drukarska. 1 pika to równowartość 12 punktów (pt).</li>
+                </ul>
+
+                <h4>4. Jednostka Procentowa (Względna Ogólna)</h4>
+                <ul class="points">
+                    <li><code>%</code> (Procenty) - Wartość procentowa obliczana bezpośrednio względem elementu-rodzica.</li>
+                </ul>
+
+                <div class="callout-box callout-exam">
+                    <p><strong>DOBRA PRAKTYKA DLA RESPONSYWNOŚCI:</strong> Współczesne standardy deweloperskie wymagają stosowania jednostki <code>rem</code> do definiowania wielkości tekstów (<code>font-size</code>) oraz dopełnień interfejsu (<code>padding</code>, <code>margin</code>). Umożliwia to osobom niedowidzącym poprawne powiększenie całej strony z poziomu ustawień systemowych przeglądarki, co stanowi jeden z kluczowych warunków dostępności <strong>WCAG</strong>.</p>
+                </div>
+            </section>
+
+            <section id="section7" class="topic-section">
+                <h2>7 — Box Model i Stylizacja Pudełek</h2>
+                
+                <h3>Struktura warstwowa modelu pudełkowego</h3>
+                <p>Każdy element wyrenderowany na stronie jest traktowany jako prostokątne pudełko (box), które składa się z następujących warstw (od wewnątrz): <strong>Content</strong> (zawartość tekstowa/obraz), <strong>Padding</strong> (wewnętrzny odstęp), <strong>Border</strong> (ramka) oraz <strong>Margin</strong> (zewnętrzny, przezroczysty odstęp odpychający inne elementy).</p>
+
+                <h3>Rewolucja box-sizing: content-box vs border-box</h3>
+                <ul class="points">
+                    <li><code>content-box</code> (Domyślna wartość): Szerokość <code>width</code> odnosi się tylko do warstwy zawartości. Jeśli dodasz padding i border, element fizycznie powiększy się na ekranie, niszcząc strukturę siatki strony.</li>
+                    <li><code>border-box</code> (Standard przemysłowy): Szerokość <code>width</code> określa całkowitą szerokość pudełka wraz z paddingiem i borderem. Warstwa zawartości kurczy się do środka, a element zachowuje idealny rozmiar.</li>
+                </ul>
+
+                <div class="live-preview-box" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 15px;">
+                    <div style="box-sizing: content-box; width: 180px; padding: 20px; border: 5px solid #1e3a5f; background-color: #e6eff2; font-size: 0.8rem;">
+                        <strong>content-box:</strong><br>Szerokość zadana: 180px.<br>Padding i border rozepchały mnie fizycznie do 230px!
+                    </div>
+                    <div style="box-sizing: border-box; width: 180px; padding: 20px; border: 5px solid #1e3a5f; background-color: #e6eff2; font-size: 0.8rem;">
+                        <strong>border-box:</strong><br>Szerokość zadana: 180px.<br>Padding schował się do środka. Dokładnie 180px na ekranie!
+                    </div>
+                </div>
+
+                <h3>Właściwość display: Zarządzanie naturą elementu</h3>
+                <ul class="points">
+                    <li><code>block</code> - Wymusza zachowanie elementu blokowego (od nowej linii, rozciąga się na 100% szerokości, akceptuje width/height).</li>
+                    <li><code>inline</code> - Element liniowy (w jednej linii, ignoruje pionowe marginesy, paddingi oraz wymiary width/height).</li>
+                    <li><code>inline-block</code> - Hybryda: Element układa się w jednej linii obok innych (jak inline), ale w pełni respektuje wymiary, marginesy i dopełnienia (jak block).</li>
+                    <li><code>none</code> - Całkowicie usuwa element z widoku i struktury. Nie zajmuje miejsca.</li>
+                </ul>
+                <h3>Właściwość border-style: Wszystkie style obramowania</h3>
+                <p>Właściwość <code>border-style</code> definiuje rodzaj linii otaczającej element. Można użyć od 1 do 4 wartości (góra, prawo, dół, lewo). Poniżej znajduje się zestawienie wszystkich dostępnych stylów wraz z ich geometrycznym wyglądem:</p>
+
+                <ul class="points">
+                    <li><code>none</code> - Brak obramowania (domyślna wartość). Grubość i kolor są ignorowane.</li>
+                    <li><code>hidden</code> - Ukryte obramowanie. Działa jak <code>none</code>, ale rozwiązuje konflikty krawędzi w tabelach.</li>
+                    <li><code>solid</code> - Ciągła, jednolita linia o stałym kolorze. Najpopularniejszy styl.</li>
+                    <li><code>dashed</code> - Linia kreskowana (złożona z prostokątnych kresek).</li>
+                    <li><code>dotted</code> - Linia kropkowana (złożona z okrągłych punktów).</li>
+                    <li><code>double</code> - Podwójna linia ciągła. Suma obu linii i przestrzeni między nimi równa się zadanej grubości (<code>border-width</code>).</li>
+                    <li><code>groove</code> - Trójwymiarowe wyżłobienie (efekt wklęsłości). Wygląd zależy od koloru bazowego.</li>
+                    <li><code>ridge</code> - Trójwymiarowy grzbiet (efekt wypukłości). Odwrotność stylu <code>groove</code>.</li>
+                    <li><code>inset</code> - Efekt wpuszczenia do środka (całe pudełko wygląda na wklęsłe).</li>
+                    <li><code>outset</code> - Efekt wytłoczenia na zewnątrz (całe pudełko wygląda na wypukłe/3D).</li>
+                </ul>
+
+                <p>Wizualne renderowanie wszystkich stylów w przeglądarce (przy grubości 4px):</p>
+                <div class="live-preview-box" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; background: #f8fafc;">
+                    <div style="border: 4px none #1e3a5f; padding: 10px; background: white; text-align: center; font-size: 0.8rem;">none</div>
+                    <div style="border: 4px hidden #1e3a5f; padding: 10px; background: white; text-align: center; font-size: 0.8rem;">hidden</div>
+                    <div style="border: 4px solid #1e3a5f; padding: 10px; background: white; text-align: center; font-size: 0.8rem; font-weight: bold;">solid</div>
+                    <div style="border: 4px dashed #1e3a5f; padding: 10px; background: white; text-align: center; font-size: 0.8rem;">dashed</div>
+                    <div style="border: 4px dotted #1e3a5f; padding: 10px; background: white; text-align: center; font-size: 0.8rem;">dotted</div>
+                    <div style="border: 4px double #1e3a5f; padding: 10px; background: white; text-align: center; font-size: 0.8rem;">double</div>
+                    <div style="border: 4px groove #1e3a5f; padding: 10px; background: white; text-align: center; font-size: 0.8rem;">groove</div>
+                    <div style="border: 4px ridge #1e3a5f; padding: 10px; background: white; text-align: center; font-size: 0.8rem;">ridge</div>
+                    <div style="border: 4px inset #1e3a5f; padding: 10px; background: white; text-align: center; font-size: 0.8rem;">inset</div>
+                    <div style="border: 4px outset #1e3a5f; padding: 10px; background: white; text-align: center; font-size: 0.8rem;">outset</div>
+                </div>
+
+                <div class="callout-box callout-exam">
+                    <p><strong>NOTACJA SKRÓCONA (Shorthand):</strong> Na egzaminie najszybciej zdefiniujesz obramowanie za pomocą zbiorczej właściwości <code>border</code>, podając kolejno grubość, styl i kolor w jednej linii, np: <code>border: 2px dashed #ff0000;</code></p>
+                </div>
+                <h3>Właściwość border-radius: Zaokrąglanie rogów</h3>
+                <p>Właściwość <code>border-radius</code> pozwala na tworzenie zaokrąglonych narożników wokół elementów. Zaokrąglenie jest wyznaczane przez promień okręgu (lub elipsy) wpisanego w dany róg elementu.</p>
+
+                <h4>1. Podstawowe reguły i liczba wartości:</h4>
+                <ul class="points">
+                    <li><strong>Jedna wartość:</strong> <code>border-radius: 10px;</code> - Wszystkie 4 rogi są zaokrąglone jednakowo.</li>
+                    <li><strong>Dwie wartości:</strong> <code>border-radius: 10px 20px;</code> - Pierwsza wartość to lewy-górny i prawy-dolny róg, druga to prawy-górny i lewy-dolny.</li>
+                    <li><strong>Cztery wartości:</strong> <code>border-radius: 5px 10px 15px 20px;</code> - Wartości przypisywane są **zgodnie z ruchem wskazówek zegara**: lewy-górny, prawy-górny, prawy-dolny, lewy-dół.</li>
+                </ul>
+
+                <h4>2. Przepis na idealne koło:</h4>
+                <p>Aby z kwadratowego elementu zrobić idealne koło, należy ustawić wartość procentową na **<code>50%</code>**. Warunkiem koniecznym jest posiadanie przez element dokładnie takich samych wymiarów szerokości i wysokości (np. <code>width: 100px; height: 100px;</code>).</p>
+
+                <h4>3. Zaawansowane zaokrąglanie eliptyczne (Znak ukośnika <code>/</code>):</h4>
+                <p>Jeśli rozdzielisz wartości znakiem ukośnika (np. <code>border-radius: 40px / 20px;</code>), zdefiniujesz osobno promień poziomy i pionowy. Pozwala to na tworzenie niesymetrycznych, obłych kształtów (tzw. blobów).</p>
+
+                <p>Wizualne renderowanie zaokrągleń w przeglądarce:</p>
+                <div class="live-preview-box" style="display: flex; flex-wrap: wrap; gap: 20px; background: #f8fafc; justify-content: center;">
+                    <div style="width: 100px; height: 100px; background: var(--bg-sidebar); border-radius: 15px; color: white; display: flex; align-items: center; text-align: center; justify-content: center; font-size: 0.75rem; padding: 5px;">
+                        border-radius:<br>15px
+                    </div>
+                    <div style="width: 100px; height: 100px; background: var(--bg-sidebar); border-radius: 50%; color: white; display: flex; align-items: center; text-align: center; justify-content: center; font-size: 0.75rem; padding: 5px;">
+                        Idealne koło:<br>50%
+                    </div>
+                    <div style="width: 140px; height: 100px; background: var(--bg-sidebar); border-radius: 50px / 25px; color: white; display: flex; align-items: center; text-align: center; justify-content: center; font-size: 0.75rem; padding: 5px;">
+                        Eliptyczne:<br>50px / 25px
+                    </div>
+                </div>
+
+                <div class="callout-box callout-exam">
+                    <p><strong>WYŻSZA JEDNOSTKA DOSTĘPNOŚCI:</strong> W nowoczesnym kodowaniu do zaokrąglania przycisków i małych elementów interfejsu zamiast pikseli (<code>px</code>) warto stosować jednostkę <code>rem</code> (np. <code>border-radius: 0.5rem;</code>). Dzięki temu promień zaokrąglenia skaluje się proporcjonalnie razem z wielkością czcionki urządzenia.</p>
+                </div>
+            </section>
+
+            <section id="section8" class="topic-section">
+                <h2>8 — Układy Stron i Poziome Menu Rozwijane</h2>
+                
+                <h3>Elastyczne układy Flexbox</h3>
+                <p>Model Flexbox służy do jednowymiarowego zarządzania elementami w kontenerze. Główne właściwości sterujące układem to <code>display: flex;</code>, <code>flex-direction</code> (kierunek osi głównej) oraz <code>justify-content</code> (wyrównanie wzdłuż osi głównej, np. <code>space-between</code>, <code>center</code>, <code>flex-start</code>).</p>
+                
+                <h3>Poziome menu nawigacyjne z rozwijanym submenu</h3>
+
+                <div class="code-block-container">
+<pre>&lt;!-- Struktura HTML oparta o listy zagnieżdżone --&gt;
+&lt;nav class="navigation-menu"&gt;
+    &lt;ul class="main-menu"&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="has-submenu"&gt;
+            &lt;a href="#"&gt;Kursy IT ▾&lt;/a&gt;
+            &lt;ul class="submenu"&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Szkolenie HTML5&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Arkusz CSS3&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</pre>
+                </div>
+
+                <p>Kluczowe reguły CSS odpowiadające za ukrywanie i pokazywanie podmenu po najechaniu myszą:</p>
+                <div class="code-block-container">
+<pre>/* Reset list i ustawienie głównego menu w poziomie */
+.main-menu { list-style-type: none; display: flex; padding: 0; }
+.main-menu > li { position: relative; } /* Punkt odniesienia dla submenu */
+
+/* Całkowite ukrycie i absolutne pozycjonowanie podmenu */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    list-style-type: none;
+}
+
+/* INTERAKCJA: Pokaż submenu, gdy użytkownik najeżdża na element nadrzędny li */
+.main-menu li:hover > .submenu {
+    display: block;
+}</pre>
+                </div>
+
+                <p><strong>Działający prototyp menu poziomego (Najedź myszą na "Kursy IT"):</strong></p>
+                <div class="live-preview-box" style="padding-bottom: 90px;">
+                    <nav style="background-color: var(--bg-sidebar); border-radius: 6px;">
+                        <ul style="list-style: none; display: flex; padding: 0; margin: 0;">
+                            <li style="position: relative; margin: 0;"><a href="#" style="display: block; padding: 12px 20px; color: white; text-decoration: none; font-size: 0.9rem;">Start</a></li>
+                            
+                            <style>
+                                .dropdown-demo:hover .submenu-demo { display: block !important; }
+                            </style>
+                            <li class="dropdown-demo" style="position: relative; margin: 0;">
+                                <a href="#" style="display: block; padding: 12px 20px; color: white; text-decoration: none; font-size: 0.9rem; background-color: rgba(255,255,255,0.05);">Kursy IT ▾</a>
+                                
+                                <ul class="submenu-demo" style="display: none; position: absolute; top: 100%; left: 0; width: 180px; background-color: white; list-style: none; padding: 5px 0; margin: 0; border: 1px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 999;">
+                                    <li style="margin: 0;"><a href="#" style="display: block; padding: 8px 15px; color: #334155; text-decoration: none; font-size: 0.85rem;">Szkolenie HTML5</a></li>
+                                    <li style="margin: 0;"><a href="#" style="display: block; padding: 8px 15px; color: #334155; text-decoration: none; font-size: 0.85rem;">Arkusz CSS3</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <h3>Zarządzanie układem: Float (Model tradycyjny) vs Flexbox (Model nowoczesny)</h3>
+                <p>Przeglądarki oferują dwa skrajnie różne podejścia do budowania kolumn i pozycjonowania elementów obok siebie: archiwalny mechanizm opływania oraz współczesny układ elastyczny.</p>
+
+                <h4>1. Właściwość float i mechanizm czyszczenia (Clearfix)</h4>
+                <p>Właściwość <code>float</code> (przyjmująca wartości <code>left</code> lub <code>right</code>) została stworzona do opływania obrazków tekstem, jednak przez lata służyła do budowania wielokolumnowych układów stron. Element z nadanym float zostaje przesunięty do lewej lub prawej krawędzi swojego kontenera, a pozostałe elementy tekstowe go otaczają.</p>
+
+                <div class="callout-box callout-error">
+                    <p><strong>PROBLEM ZEROWEJ WYSOKOŚCI RODZICA:</strong> Elementy z właściwością float są "wyrywane" z normalnego przepływu dokumentu. Jeśli rodzic zawiera w sobie wyłącznie elementy opływające, jego wysokość drastycznie spadnie do **0 pikseli**, a tło i obramowanie rodzica znikną. </p>
+                </div>
+
+                <p>Aby naprawić ten błąd, stosuje się **czyszczenie opływania** (Clearfix) za pomocą właściwości <code>clear: both;</code> nadanej na element znajdujący się *pod* elementami opływającymi, lub poprzez pseudoelement <code>::after</code> na rodzicu:</p>
+
+                <div class="code-block-container">
+<pre>/* Nowoczesny sposób na czyszczenie float (Clearfix) */
+.parent-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}</pre>
+                </div>
+
+                <h4>2. Elastyczny model Flexbox (Standard branżowy)</h4>
+                <p>Model Flexbox aktywujemy za pomocą reguły <code>display: flex;</code> nadanej na rodzica (kontener). Automatycznie zamienia on swoje bezpośrednie dzieci w elastyczne elementy (flex items), sterowane wzdłuż **osi głównej** (poziomej) oraz **osi poprzecznej** (pionowej).</p>
+
+                <p>Najważniejsze właściwości sterujące kontenerem Flex:</p>
+                <ul class="points">
+                    <li><code>flex-direction</code> - Określa kierunek osi głównej: <code>row</code> (elementy w poziomie, domyślnie) lub <code>column</code> (elementy w pionie, jeden pod drugim).</li>
+                    <li><code>justify-content</code> - Wyrównuje elementy wzdłuż **osi głównej**. Wartości: <code>flex-start</code> (do lewej), <code>center</code> (wyśrodkowanie), <code>space-between</code> (skrajne elementy dotykają brzegów, równy odstęp w środku).</li>
+                    <li><code>align-items</code> - Wyrównuje elementy wzdłuż **osi poprzecznej** (w pionie). Wartości: <code>stretch</code> (rozciągnięcie do pełnej wysokości, domyślnie), <code>center</code> (idealne centrowanie w pionie).</li>
+                    <li><code>gap</code> - Definiuje sztywny odstęp pomiędzy elementami wewnątrz flexboxa (np. <code>gap: 15px;</code>), eliminując potrzebę stosowania marginesów.</li>
+                </ul>
+
+                <p>Wizualne porównanie zachowania obu mechanizmów w przeglądarce:</p>
+                <div class="live-preview-box" style="background-color: #f8fafc;">
+                    
+                    <p style="font-size: 0.8rem; font-weight: bold; margin-bottom: 5px;">A. Klasyczny układ oparty na FLOAT (Wymagał czyszczenia krawędzi):</p>
+                    <div style="background: #e2e8f0; padding: 10px; margin-bottom: 20px;">
+                        <div style="float: left; width: 30%; background: #3b7d8c; color: white; padding: 10px; box-sizing: border-box;">Kolumna 1 (float: left)</div>
+                        <div style="float: right; width: 65%; background: #1e3a5f; color: white; padding: 10px; box-sizing: border-box;">Kolumna 2 (float: right)</div>
+                        <div style="clear: both;"></div> </div>
+
+                    <p style="font-size: 0.8rem; font-weight: bold; margin-bottom: 5px;">B. Nowoczesny układ FLEXBOX (Automatyczne wyrównanie i elastyczność):</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 15px; background: #e2e8f0; padding: 10px;">
+                        <div style="background: #3b7d8c; color: white; padding: 10px; flex: 1;">Flex Item 1</div>
+                        <div style="background: #1e3a5f; color: white; padding: 10px; flex: 2;">Flex Item 2 (Szerszy)</div>
+                        <div style="background: #c27b8a; color: white; padding: 10px; flex: 1;">Flex Item 3</div>
+                    </div>
+                </div>
+            </section>
+            <section id="section9" class="topic-section">
+                <h2>9 — Pozycjonowanie i Animacje CSS</h2>
+                
+                <h3>Właściwość position i zarządzanie kontekstem (Z-Index)</h3>
+                <p>Właściwość <code>position</code> określa algorytm używany do obliczania współrzędnych położenia elementu na ekranie:</p>
+                <ul class="points">
+                    <li><code>static</code> - Wartość domyślna. Element znajduje się w naturalnym przepływie dokumentu (Document Flow). Ignoruje właściwości przesunięcia (top, right, bottom, left) oraz z-index.</li>
+                    <li><code>relative</code> - Pozycjonowanie relatywne. Element zostaje przesunięty względem swojego **pierwotnego (domyślnego) miejsca**. Przestrzeń, którą pierwotnie zajmował, pozostaje pusta (sąsiednie elementy jej nie zajmują). Bardzo często służy jako punkt odniesienia (rodzic) dla elementów z pozycją absolutną.</li>
+                    <li><code>absolute</code> - Pozycjonowanie absolutne. Element zostaje całkowicie wyrwany z naturalnego przepływu dokumentu. Nie zajmuje miejsca na stronie, a sąsiednie elementy układają się tak, jakby go nie było. Jest pozycjonowany względem **najbliższego przodka (rodzica/dziadka), który ma pozycję inną niż static** (najczęściej relative). Jeśli takiego nie ma, pozycjonuje się względem okna przeglądarki.</li>
+                    <li><code>fixed</code> - Pozycjonowanie stałe. Podobnie jak absolute, element jest wyrywany z przepływu, ale jego punktem odniesienia jest **zawsze okno przeglądarki (viewport)**. Pozostaje w tym samym miejscu na ekranie nawet podczas przewijania (skrolowania) strony (idealne dla pasków nawigacji lub przycisków "w górę").</li>
+                    <li><code>sticky</code> - Pozycjonowanie hybrydowe. Element zachowuje się jak <code>static/relative</code>, dopóki przewijanie strony nie osiągnie określonej granicy (np. <code>top: 0;</code>) - wtedy "przykleja się" do krawędzi ekranu i zachowuje jak <code>fixed</code>.</li>
+                </ul>
+
+                <p>Właściwość <code>z-index</code> (działająca wyłącznie dla elementów z pozycją inną niż static) zarządza osią Z, czyli kolejnością nakładania się warstw na siebie. Element o wyższym <code>z-index</code> zasłoni element o niższej wartości.</p>
+
+                <h3>Transformacje 2D i 3D (transform)</h3>
+                <p>Właściwość <code>transform</code> pozwala na modyfikację geometrii elementu w przestrzeni bez wpływu na otaczający go układ stron. Najważniejsze funkcje transformacji to:</p>
+                <ul class="points">
+                    <li><code>translate(x, y)</code> - Przesunięcie elementu w poziomie i pionie (można używać pikseli lub procentów).</li>
+                    <li><code>scale(x, y)</code> - Skalowanie (zmiana rozmiaru). Wartość `1` to rozmiar oryginalny, `1.5` to powiększenie o 50%.</li>
+                    <li><code>rotate(deg)</code> - Obrót elementu o zadaną liczbę stopni (np. `45deg`, `180deg`).</li>
+                    <li><code>skew(x, y)</code> - Pochylenie (ścięcie) elementu wzdłuż osi X i Y.</li>
+                </ul>
+
+                <h3>Płynne przejścia (transition)</h3>
+                <p>Przejścia CSS umożliwiają płynną zmianę wartości właściwości (np. koloru tła po najechaniu myszą) w określonym czasie, zamiast natychmiastowego skoku. Składnia zapisu skróconego: <code>transition: [właściwość] [czas_trwania] [funkcja_płynności] [opóźnienie];</code>.</p>
+                
+                <div class="code-block-container">
+<pre>/* Płynna animacja przycisku po najechaniu kursosem */
+.interactive-btn {
+    background-color: #3b7d8c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    transition: background-color 0.4s ease-in-out, transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.interactive-btn:hover {
+    background-color: #2d4a6e;
+    transform: translateY(-3px) scale(1.05);
+}</pre>
+                </div>
+
+                <p>Demonstracja płynnych przejść i transformacji w czasie rzeczywistym (Najedź myszą na poniższe elementy):</p>
+                <div class="live-preview-box" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                    <style>
+                        .demo-box-trans {
+                            width: 130px; padding: 15px; text-align: center; color: white; font-weight: bold; font-size: 0.8rem; border-radius: 6px; cursor: pointer;
+                        }
+                        .box-t1 { background-color: #2563eb; transition: transform 0.3s ease; }
+                        .box-t1:hover { transform: scale(1.15) rotate(5deg); }
+                        .box-t2 { background-color: #16a34a; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+                        .box-t2:hover { transform: translateY(-10px); }
+                        .box-t3 { background-color: #dc2626; transition: background-color 0.5s ease, border-radius 0.5s ease; }
+                        .box-t3:hover { background-color: #7f1d1d; border-radius: 50%; }
+                    </style>
+                    <div class="demo-box-trans box-t1">Skalowanie i Obrót</div>
+                    <div class="demo-box-trans box-t2">Przesunięcie Y (Wyskok)</div>
+                    <div class="demo-box-trans box-t3">Kolor i Kształt</div>
+                </div>
+
+                <h3>Klatki kluczowe i zaawansowane animacje (@keyframes)</h3>
+                <p>Gdy przejścia (transitions) są niewystarczające do realizacji złożonych pętli ruchowych, stosuje się pełne animacje oparte na klatkach kluczowych <code>@keyframes</code>. Pozwalają one kontrolować stan stylów w dowolnym punkcie osi czasu animacji (od 0% do 100%).</p>
+
+                <div class="code-block-container">
+<pre>/* 1. Definicja osi czasu i klatek kluczowych animacji */
+@keyframes pulseGlow {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(194, 123, 138, 0.4);
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: 0 0 15px 5px rgba(194, 123, 138, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(194, 123, 138, 0);
+    }
+}
+
+/* 2. Przypisanie i uruchomienie animacji na elemencie */
+.animated-badge {
+    animation-name: pulseGlow;
+    animation-duration: 2s;
+    animation-iteration-count: infinite; /* Pętla nieskończona */
+    animation-timing-function: ease-in-out;
+}</pre>
+                </div>
+            </section>
+
+            <section id="section10" class="topic-section">
+                <h2>10 — Formularze i Zaawansowane Typy Pól</h2>
+                
+                <h3>Konstrukcja i parametry przesyłania danych (action, method)</h3>
+                <p>Formularz HTML służy do zbierania danych od użytkownika i przesyłania ich do serwera (np. skryptu PHP). Kontener główny <code>&lt;form&gt;</code> wymaga zdefiniowania dwóch fundamentalnych atrybutów:</p>
+                <ul>
+                    <li><code>action="ścieżka_do_pliku"</code> - Określa docelowy adres URL skryptu po stronie serwera, który przetworzy przesłane dane (np. `rejestracja.php`).</li>
+                    <li><code>method="get|post"</code> - Protokół przesyłu danych:
+                        <ul>
+                            <li><strong>GET:</strong> Dane są jawnie doklejane do paska adresu przeglądarki (np. `szukaj.php?fraza=css`). Metoda niebezpieczna dla haseł, ma limit znaków (ok. 2000), pozwala na zapisanie wyniku w zakładkach.</li>
+                            <li><strong>POST:</strong> Dane są ukrywane wewnątrz nagłówków żądania HTTP. Bezpieczna, brak limitów rozmiaru (stosowana do przesyłania plików, haseł i długich tekstów).</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Mapowanie pól: Powiązanie znaczników label i input</h3>
+                <p>Dla zachowania semantyki i dostępności, każde pole wprowadzania danych musi posiadać powiązany z nim etykietę tekstową <code>&lt;label&gt;</code>. Powiązania dokonuje się na dwa sposoby. Najbardziej rekomendowany, bezbłędny sposób egzaminacyjny to **powiązanie za pomocą atrybutów `for` oraz `id`**:</p>
+                <div class="code-block-container">
+<pre>&lt;label for="user-email"&gt;Adres e-mail:&lt;/label&gt;
+&lt;input type="email" id="user-email" name="email"&gt;</pre>
+                </div>
+                <p>Wartość atrybutu <code>for</code> w znaczniku label **musi być dokładnie taka sama** jak wartość atrybutu <code>id</code> w znaczniku input. Dzięki temu kliknięcie w tekst etykiety automatycznie aktywuje i przenosi fokus do właściwego pola tekstowego.</p>
+
+                <h3>Przegląd nowoczesnych typów pól i walidacja HTML5</h3>
+                <p>Nowoczesny standard HTML5 wprowadził natywne walidowanie pól po stronie klienta bez konieczności używania JavaScriptu za pomocą atrybutów takich jak <code>required</code> (pole obowiązkowe), <code>pattern</code> (wyrażenie regularne Regex), <code>min/max</code> czy <code>placeholder</code>. Poniższy kod prezentuje kompletny formularz egzaminacyjny zawierający pełne spectrum typów pól:</p>
+
+                <div class="code-block-container">
+<pre>&lt;form method="post" class="exam-form"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Karta Rejestracji Egzaminacyjnej Kandydata&lt;/legend&gt;
+
+        /* 1. Pole tekstowe zwykłe z placeholderem i wymuszeniem wypełnienia */
+        &lt;label for="f-name"&gt;Imię i Nazwisko:&lt;/label&gt;
+        &lt;input type="text" id="f-name" name="fullname" placeholder="Jan Kowalski" required&gt;
+
+        /* 2. Pole hasła - automatycznie maskuje wprowadzane znaki */
+        &lt;label for="f-pass"&gt;Hasło dostępu:&lt;/label&gt;
+        &lt;input type="password" id="f-pass" name="password" required&gt;
+
+        /* 3. Pole numeryczne z ograniczeniem zakresu */
+        &lt;label for="f-age"&gt;Wiek (18-99 lat):&lt;/label&gt;
+        &lt;input type="number" id="f-age" name="age" min="18" max="99" value="18"&gt;
+
+        /* 4. Suwak (Range) */
+        &lt;label for="f-skills"&gt;Poziom zaawansowania HTML/CSS:&lt;/label&gt;
+        &lt;input type="range" id="f-skills" name="skills" min="1" max="10" step="1"&gt;
+
+        /* 5. Kalendarz (Date) - natywne okno wyboru daty */
+        &lt;label for="f-date"&gt;Preferowany termin egzaminu:&lt;/label&gt;
+        &lt;input type="date" id="f-date" name="exam_date" required&gt;
+
+        /* 6. Selektor koloru */
+        &lt;label for="f-color"&gt;Kolor motywu profilu:&lt;/label&gt;
+        &lt;input type="color" id="f-color" name="theme_color" value="#3b7d8c"&gt;
+
+        /* 7. Pola wyboru jednokrotnego (Radio Buttons) - ważny wspólny atrybut 'name' */
+        &lt;p&gt;Wybierz system operacyjny do pracy:&lt;/p&gt;
+        &lt;input type="radio" id="os-win" name="os_choice" value="windows" checked&gt;
+        &lt;label for="os-win"&gt;Microsoft Windows&lt;/label&gt;
+        
+        &lt;input type="radio" id="os-linux" name="os_choice" value="linux"&gt;
+        &lt;label for="os-linux"&gt;GNU/Linux Debiana&lt;/label&gt;
+
+        /* 8. Pole wielokrotnego wyboru (Checkbox) */
+        &lt;input type="checkbox" id="accept-terms" name="rules" value="accepted" required&gt;
+        &lt;label for="accept-terms"&gt;Oświadczam, że akceptuję regulamin platformy INF.03&lt;/label&gt;
+
+        /* 9. Lista rozwijana (Select z opcjami) */
+        &lt;label for="f-center"&gt;Ośrodek egzaminacyjny:&lt;/label&gt;
+        &lt;select id="f-center" name="center_location"&gt;
+            &lt;option value="krk"&gt;Kraków - Centrum Technologii&lt;/option&gt;
+            &lt;option value="waw" selected&gt;Warszawa - Główna Komisja&lt;/option&gt;
+            &lt;option value="wro"&gt;Wrocław - Sektor Akademicki&lt;/option&gt;
+        &lt;/select&gt;
+
+        /* 10. Wielolinijkowe pole tekstowe (TextArea) */
+        &lt;label for="f-notes"&gt;Dodatkowe uwagi / specyfikacja sprzętowa:&lt;/label&gt;
+        &lt;textarea id="f-notes" name="user_notes" rows="4" cols="50" placeholder="Wpisz tekst..."&gt;&lt;/textarea&gt;
+
+        /* Przyciski operacyjne */
+        &lt;button type="submit"&gt;Wyślij zgłoszenie&lt;/button&gt;
+        &lt;button type="reset"&gt;Wyczyść formularz&lt;/button&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+                </div>
+
+                <p>Natywne renderowanie i stylizacja powyższych elementów formularza na żywo:</p>
+                <div class="live-preview-box" style="background-color: #f8fafc;">
+                    <form onsubmit="event.preventDefault(); alert('Natywna walidacja przeszła pomyślnie! Próba wysłania formularza.');" style="max-width: 550px; margin: 0 auto; background: white; padding: 20px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: sans-serif;">
+                        <fieldset style="border: 1px solid #94a3b8; padding: 15px; border-radius: 6px;">
+                            <legend style="font-weight: bold; padding: 0 10px; color: var(--bg-sidebar); font-size: 0.9rem;">Karta Rejestracji Egzaminacyjnej Kandydata</legend>
+                            
+                            <div style="margin-bottom: 12px;">
+                                <label for="f-name" style="display:block; margin-bottom:5px; font-size:0.8rem; font-weight:600;">Imię i Nazwisko *</label>
+                                <input type="text" id="f-name" placeholder="Jan Kowalski" required style="width:100%; padding:8px; box-sizing:border-box; border:1px solid #cbd5e1; border-radius:4px;">
+                            </div>
+
+                            <div style="margin-bottom: 12px; display: flex; gap: 15px;">
+                                <div style="flex: 1;">
+                                    <label for="f-age" style="display:block; margin-bottom:5px; font-size:0.8rem; font-weight:600;">Wiek (18-99) *</label>
+                                    <input type="number" id="f-age" min="18" max="99" value="18" required style="width:100%; padding:8px; box-sizing:border-box; border:1px solid #cbd5e1; border-radius:4px;">
+                                </div>
+                                <div style="flex: 1;">
+                                    <label for="f-date" style="display:block; margin-bottom:5px; font-size:0.8rem; font-weight:600;">Data egzaminu *</label>
+                                    <input type="date" id="f-date" required style="width:100%; padding:6px; box-sizing:border-box; border:1px solid #cbd5e1; border-radius:4px;">
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 15px;">
+                                <div style="flex: 1;">
+                                    <label for="f-skills" style="display:block; margin-bottom:5px; font-size:0.8rem; font-weight:600;">Poziom zaawansowania (1-10):</label>
+                                    <input type="range" id="f-skills" min="1" max="10" step="1" style="width:100%;">
+                                </div>
+                                <div>
+                                    <label for="f-color" style="display:block; margin-bottom:5px; font-size:0.8rem; font-weight:600;">Motyw:</label>
+                                    <input type="color" id="f-color" value="#3b7d8c" style="border:none; background:none; height:35px; width:40px; cursor:pointer;">
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 12px; border-top: 1px solid #e2e8f0; padding-top: 10px;">
+                                <span style="display:block; margin-bottom:8px; font-size:0.8rem; font-weight:600;">System operacyjny:</span>
+                                <div style="display:flex; gap:15px; font-size:0.85rem;">
+                                    <label><input type="radio" name="os_demo" value="win" checked style="margin-right:5px;">Windows</label>
+                                    <label><input type="radio" name="os_demo" value="lin" style="margin-right:5px;">Linux</label>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 12px;">
+                                <label for="f-center" style="display:block; margin-bottom:5px; font-size:0.8rem; font-weight:600;">Ośrodek egzaminacyjny:</label>
+                                <select id="f-center" style="width:100%; padding:8px; border:1px solid #cbd5e1; border-radius:4px; background-color:white;">
+                                    <option>Kraków - Centrum Technologii</option>
+                                    <option selected>Warszawa - Główna Komisja</option>
+                                    <option>Wrocław - Sektor Akademicki</option>
+                                </select>
+                            </div>
+
+                            <div style="margin-bottom: 12px;">
+                                <label for="f-notes" style="display:block; margin-bottom:5px; font-size:0.8rem; font-weight:600;">Uwagi:</label>
+                                <textarea id="f-notes" rows="2" style="width:100%; padding:8px; box-sizing:border-box; border:1px solid #cbd5e1; border-radius:4px; font-family:sans-serif;" placeholder="Dodatkowe informacje..."></textarea>
+                            </div>
+
+                            <div style="margin-bottom: 12px; font-size:0.8rem;">
+                                <label style="display:flex; align-items:flex-start; gap:6px; cursor:pointer;">
+                                    <input type="checkbox" required style="margin-top:2px;">
+                                    <span>Akceptuję regulamin platformy i oświadczam, że dane są prawdziwe. *</span>
+                                </label>
+                            </div>
+
+                            <div style="display:flex; gap:10px; margin-top:15px;">
+                                <button type="submit" style="flex:1; background-color:var(--bg-sidebar); color:white; border:none; padding:10px; border-radius:4px; font-weight:bold; cursor:pointer;">Wyślij zgłoszenie</button>
+                                <button type="reset" style="background-color:#e2e8f0; color:#334155; border:none; padding:10px 15px; border-radius:4px; cursor:pointer;">Reset</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </section>
+
+            <section id="section11" class="topic-section">
+                <h2>11 — Multimedia, Grafika Wektorowa SVG, RWD i WCAG</h2>
+                
+                <h3>Natywne odtwarzacze audio i video w HTML5</h3>
+                <p>Standard HTML5 wyeliminował konieczność stosowania zewnętrznych wtyczek (takich jak dawny Adobe Flash) wprowadzając natywne odtwarzacze multimedialne za pomocą znaczników <code>&lt;audio&gt;</code> oraz <code>&lt;video&gt;</code>. Posiadają one zestaw atrybutów sterujących:</p>
+                <ul class="points">
+                    <li><code>controls</code> - Wyświetla natywny pasek nawigacji (odtwarzaj, pauza, regulacja głośności, pełny ekran). **Brak tego atrybutu sprawi, że odtwarzacz będzie całkowicie niewidoczny dla użytkownika.**</li>
+                    <li><code>autoplay</code> - Uruchamia odtwarzanie pliku automatycznie po załadowaniu strony (współczesne przeglądarki blokują dźwięk z autoplay, dopóki użytkownik nie wejdzie w interakcję ze stroną).</li>
+                    <li><code>loop</code> - Zapętla materiał (po zakończeniu odtwarza się od nowa).</li>
+                    <li><code>muted</code> - Wycisza domyślnie ścieżkę dźwiękową.</li>
+                </ul>
+
+                <div class="code-block-container">
+<pre>&lt;!-- Bezpieczna i poprawna struktura odtwarzacza wideo z alternatywnymi formatami --&gt;
+&lt;video controls width="100%" poster="img/miniatura.jpg"&gt;
+    &lt;source href="media/film_egzaminacyjny.mp4" type="video/mp4"&gt;
+    &lt;source href="media/film_egzaminacyjny.webm" type="video/webm"&gt;
+    Twoja przeglądarka nie obsługuje natywnego odtwarzacza wideo HTML5.
+&lt;/video&gt;</pre>
+                </div>
+
+                <h3>Grafika rastrowa (PNG, JPG, WebP) vs Grafika Wektorowa (SVG)</h3>
+                <p>Współczesny front-end opiera się na dwóch odmiennych modelach zapisu obrazu graficznego:</p>
+                <ul class="points">
+                    <li><strong>Grafika rastrowa (Pixelowa):</strong> Pliki `.jpg`, `.png`, `.webp`. Obraz składa się ze sztywnej siatki kolorowych punktów (pikseli). Podczas powiększania (skalowania) następuje drastyczny spadek jakości (pikseloza, rozmycie krawędzi). Przeznaczona do zdjęć i skomplikowanych obrazów malarskich.</li>
+                    <li><strong>Grafika wektorowa:</strong> Pliki `.svg` (Scalable Vector Graphics). Obraz opisany jest matematycznymi równaniami kształtów geometrycznych (linii, krzywych Beziera, okręgów, wielokątów). **Może być skalowany w nieskończoność bez najmniejszej utraty ostrości i jakości.** Dodatkowo kod SVG to czysty XML, co oznacza, że kod grafiki można wkleić bezpośrednio do dokumentu HTML i stylizować go lub animować z poziomu CSS!</li>
+                </ul>
+
+                <p>Przykład czystego kodu wektorowego SVG generującego ikonę tarczy (bezpieczeństwa) bezpośrednio na ekranie:</p>
+                <div class="code-block-container">
+<pre>&lt;svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3b7d8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+    &lt;path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"&gt;&lt;/path&gt;
+&lt;/svg&gt;</pre>
+                </div>
+                
+                <p>Wyrenderowany na żywo element SVG z kodu powyżej:</p>
+                <div class="live-preview-box" style="text-align: center;">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3b7d8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s; cursor:pointer;" onmouseover="this.style.transform='rotate(15deg) scale(1.1)';" onmouseout="this.style.transform='rotate(0deg) scale(1)';">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <p style="font-size:0.75rem; color:gray; margin-top:5px;">Matematyczna ikona wektorowa (Najedź myszą, aby przetestować interakcję CSS)</p>
+                </div>
+                <h3>Podstawowe kształty wektorowe SVG</h3>
+                <p>Grafika SVG (Scalable Vector Graphics) jest oparta na kodzie XML. Oznacza to, że kształty są rysowane za pomocą matematycznych punktów i linii, dzięki czemu nigdy nie tracą jakości przy powiększaniu. Każdy kształt musi znajdować się wewnątrz kontenera <code>&lt;svg&gt;</code>.</p>
+
+                <h4>1. Znaczniki strukturalne podstawowych figur:</h4>
+                <ul class="points">
+                    <li><strong>Linia (<code>&lt;line&gt;</code>):</strong> Rysowana od punktu początkowego (x1, y1) do końcowego (x2, y2). Wymaga określenia koloru linii (<code>stroke</code>).</li>
+                    <li><strong>Prostokąt / Kwadrat (<code>&lt;rect&gt;</code>):</strong> Definiowany przez punkt startu (x, y) oraz wymiary (<code>width</code>, <code>height</code>).</li>
+                    <li><strong>Koło (<code>&lt;circle&gt;</code>):</strong> Definiowane przez współrzędne środka (cx, cy) oraz promień (<code>r</code>).</li>
+                </ul>
+
+                <div class="code-block-container">
+<pre>&lt;!-- 1. Prosta linia --&gt;
+&lt;svg width="200" height="60"&gt;
+    &lt;line x1="10" y1="30" x2="190" y2="30" stroke="#1e3a5f" stroke-width="5" /&gt;
+&lt;/svg&gt;
+
+&lt;!-- 2. Kwadrat (prostokąt o równych bokach) --&gt;
+&lt;svg width="100" height="100"&gt;
+    &lt;rect x="10" y="10" width="80" height="80" fill="#3b7d8c" stroke="#1e3a5f" stroke-width="3" /&gt;
+&lt;/svg&gt;
+
+&lt;!-- 3. Koło --&gt;
+&lt;svg width="100" height="100"&gt;
+    &lt;circle cx="50" cy="50" r="40" fill="#c27b8a" stroke="#1e3a5f" stroke-width="3" /&gt;
+&lt;/svg&gt;</pre>
+                </div>
+
+                <p>Renderowanie kształtów SVG na żywo w przeglądarce:</p>
+                <div class="live-preview-box" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center; background: #f8fafc; padding: 20px;">
+                    
+                    <div style="text-align: center;">
+                        <svg width="200" height="60" style="background: white; border: 1px dashed #ccc;">
+                            <line x1="10" y1="30" x2="190" y2="30" stroke="#1e3a5f" stroke-width="5" />
+                        </svg>
+                        <div style="font-size: 0.75rem; margin-top: 5px; color: #64748b;">&lt;line&gt;</div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <svg width="100" height="100" style="background: white; border: 1px dashed #ccc;">
+                            <rect x="10" y="10" width="80" height="80" fill="#3b7d8c" stroke="#1e3a5f" stroke-width="3" />
+                        </svg>
+                        <div style="font-size: 0.75rem; margin-top: 5px; color: #64748b;">&lt;rect&gt; (Kwadrat)</div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <svg width="100" height="100" style="background: white; border: 1px dashed #ccc;">
+                            <circle cx="50" cy="50" r="40" fill="#c27b8a" stroke="#1e3a5f" stroke-width="3" />
+                        </svg>
+                        <div style="font-size: 0.75rem; margin-top: 5px; color: #64748b;">&lt;circle&gt;</div>
+                    </div>
+
+                </div>
+
+                <div class="callout-box callout-exam">
+                    <p><strong>ATRYBUTY STYLIZACJI:</strong> Zapamiętaj na egzamin, że w SVG nie używa się standardowych reguł CSS do kolorowania. Kolor tła figury to zawsze atrybut <code>fill</code>, kolor obramowania to <code>stroke</code>, a grubość ramki to <code>stroke-width</code>.</p>
+                </div>
+                <h3>Zasady Responsive Web Design (RWD) i zapytania Media Queries</h3>
+                <p>Responsive Web Design to technika projektowania witryn w taki sposób, aby ich układ automatycznie dopasowywał się do rozmiaru ekranu urządzenia (smartfon, tablet, laptop, monitor stacjonarny). Fundamentem technologii RWD są trzy elementy składowe:</p>
+                <ol class="points">
+                    <li><strong>Płynne siatki (Fluid Grids):</strong> Definiowanie wymiarów elementów w jednostkach relatywnych (procenty `%`, `vw`, `vh`, `rem`) zamiast sztywnych pikseli `px`.</li>
+                    <li><strong>Elastyczne multimedia:</strong> Zabezpieczenie obrazów przed rozbijaniem układu stron poprzez nadanie im maksymalnej szerokości: <code>img, video { max-width: 100%; height: auto; }</code>.</li>
+                    <li><strong>Zapytania Media Queries:</strong> Instrukcje warunkowe w CSS, które aplikują określone reguły stylów tylko wtedy, gdy urządzenie spełnia parametry techniczne (np. szerokość ekranu).</li>
+                </ol>
+
+                <div class="code-block-container">
+<pre>/* --- Baza stylów (Domyślnie dla smartfonów - podejście Mobile-First) --- */
+.content-wrapper {
+    display: flex;
+    flex-direction: column; /* Na telefonie kolumny jedna pod drugą */
+    gap: 15px;
+}
+
+/* --- Punkt załamania (Breakpoint) dla tabletów (ekrany od 768px w górę) --- */
+@media screen and (min-width: 768px) {
+    .content-wrapper {
+        flex-direction: row; /* Układ zmienia się w poziomą siatkę */
+    }
+    .sidebar {
+        width: 30%;
+    }
+    .main-text {
+        width: 70%;
+    }
+}
+
+/* --- Punkt załamania dla dużych monitorów (ekrany od 1200px w górę) --- */
+@media screen and (min-width: 1200px) {
+    body {
+        font-size: 18px; /* Zwiększamy globalną czytelność typografii */
+    }
+    .content-wrapper {
+        max-width: 1140px; /* Blokujemy rozciąganie layoutu w nieskończoność */
+        margin: 0 auto;
+    }
+}</pre>
+                </div>
+
+                <h3>Standard WCAG (Dostępność stron www dla osób z niepełnosprawnościami)</h3>
+                <p>Standard WCAG (Web Content Accessibility Guidelines) definiuje zestaw wytycznych zapewniających dostępność cyfrową witryn internetowych dla osób niewidomych, niedowidzących, niesłyszących czy z ograniczeniami motorycznymi. Ignorowanie tych zasad odcina miliony użytkowników od informacji i grozi sankcjami prawnymi dla instytucji publicznych.</p>
+                
+                <p>Cztery podstawowe filary standardu WCAG (Zasada **POUR**):</p>
+                <ol class="points">
+                    <li><strong>Postrzegalność (Perceivable):</strong> Informacje oraz komponenty interfejsu użytkownika muszą być przedstawione w sposób dostępny dla ich zmysłów. **Kluczowa praktyka:** Każdy element graficzny niebędący dekoracją musi posiadać atrybut <code>alt="..."</code> z opisem alternatywnym dla czytników ekranu osób niewidomych.</li>
+                    <li><strong>Funkcjonalność (Operable):</strong> Komponenty interfejsu i nawigacja muszą być możliwe do użycia. **Kluczowa praktyka:** Cała strona musi być w pełni obsługiwana za pomocą samej klawiatury (klawisz Tab do przechodzenia między linkami i polami). Niedopuszczalne jest usuwanie widocznego obrysu aktywacji (<code>outline: none;</code> w stanie <code>:focus</code>).</li>
+                    <li><strong>Zrozumiałość (Understandable):</strong> Informacje oraz obsługa interfejsu muszą być zrozumiałe. **Kluczowa praktyka:** Kod musi definiować główny język dokumentu w tagu html (<code>&lt;html lang="pl"&gt;</code>), aby syntezatory mowy poprawnie dobrały akcent i fonetykę. Informacje o błędach w formularzach muszą być jasne i tekstowe.</li>
+                    <li><strong>Solidność / Kompatybilność (Robust):</strong> Treść musi być na tyle stabilna, aby mogła być poprawnie interpretowana przez różnorodne aplikacje użytkownika, w tym asystujące (np. czytniki ekranu NVDA, JAWS). **Kluczowa praktyka:** Prawidłowe domykanie wszystkich znaczników, unikanie duplikowania identyfikatorów `id` i ścisłe przestrzeganie semantyki kodu HTML5.</li>
+                </ol>
+                
+            </section>
+        </main>
+        <footer>
+            <span class="footer">Projekt - przygotowanie na inf03. Jakub Siwek 2Ib2</span>
+        </footer>
+    </div>
+</body>
+</html>
